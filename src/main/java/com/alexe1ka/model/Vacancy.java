@@ -1,18 +1,25 @@
 package com.alexe1ka.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "VACANCIES")
 public class Vacancy {
     @Id
     @GeneratedValue
     private int id;
 
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "salary")
     private int salary;
+
+    @Column(name = "experience")
     private String experience;
+
+    @Column(name = "city")
     private String city;
 
     public Vacancy() {
