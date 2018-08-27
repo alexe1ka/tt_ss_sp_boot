@@ -11,16 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/")
 public class VacancyRestController {
 
+    private final VacanciesRestService service;
+
     @Autowired
-    VacanciesRestService service;
+    public VacancyRestController(VacanciesRestService service) {
+        this.service = service;
+    }
 
     //put /vacancy
     //TODO  - а если пытаются добавить уже существующую вакансию?
-    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_XML_VALUE)
+    @RequestMapping(value = "/vacancy", method = RequestMethod.PUT, produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
     public ResponseEntity<Vacancy> newVacancy(@RequestBody @Valid Vacancy vacancy) {
         if (vacancy == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -31,7 +37,8 @@ public class VacancyRestController {
 
 
     //get /vacancy
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "/vacancy",method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<List<Vacancy>> getVacancies() {
         List<Vacancy> vacancies = this.service.getVacancies();
         if (0 == vacancies.size()) {
@@ -42,7 +49,8 @@ public class VacancyRestController {
 
 
     //get /vacancy/{id}
-    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "/vacancy/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Vacancy> getVacancyById(@PathVariable("id") Integer id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -55,7 +63,8 @@ public class VacancyRestController {
     }
 
     //delete /vacancy/{id}
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "/vacancy/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Vacancy> deleteVacancyById(@PathVariable("id") Integer id) {
         Vacancy vacancy = this.service.getVacancyById(id);
         if (null == vacancy) {

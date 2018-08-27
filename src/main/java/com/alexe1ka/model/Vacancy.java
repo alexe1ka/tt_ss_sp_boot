@@ -1,11 +1,12 @@
 package com.alexe1ka.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "VACANCIES")
-@XmlRootElement //TODO xml?
+//@XmlRootElement //TODO xml?
 public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +34,7 @@ public class Vacancy {
         this.city = city;
     }
 
+//    @XmlElement
     public Integer getId() {
         return id;
     }
@@ -41,6 +43,7 @@ public class Vacancy {
         this.id = id;
     }
 
+    @XmlElement
     public String getName() {
         return name;
     }
@@ -49,6 +52,7 @@ public class Vacancy {
         this.name = name;
     }
 
+//    @XmlElement
     public int getSalary() {
         return salary;
     }
@@ -57,6 +61,7 @@ public class Vacancy {
         this.salary = salary;
     }
 
+//    @XmlElement
     public String getExperience() {
         return experience;
     }
@@ -65,6 +70,7 @@ public class Vacancy {
         this.experience = experience;
     }
 
+//    @XmlElement
     public String getCity() {
         return city;
     }

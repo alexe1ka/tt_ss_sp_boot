@@ -13,8 +13,12 @@ import java.util.List;
 @Service
 public class VacanciesRestServiceImpl implements VacanciesRestService {
 
+    private final VacancyRepository vacancyRepository;
+
     @Autowired
-    VacancyRepository vacancyRepository;
+    public VacanciesRestServiceImpl(VacancyRepository vacancyRepository) {
+        this.vacancyRepository = vacancyRepository;
+    }
 
 
     @Override
