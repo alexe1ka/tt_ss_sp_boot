@@ -13,12 +13,9 @@ import java.util.List;
 @Service
 public class VacanciesRestServiceImpl implements VacanciesRestService {
 
-    private final VacancyRepository vacancyRepository;
-
     @Autowired
-    public VacanciesRestServiceImpl(VacancyRepository vacancyRepository) {
-        this.vacancyRepository = vacancyRepository;
-    }
+    VacancyRepository vacancyRepository;
+
 
     @Override
     public void newVacancy(Vacancy vacancy) {
@@ -34,13 +31,13 @@ public class VacanciesRestServiceImpl implements VacanciesRestService {
 
     @Override
     public Vacancy getVacancyById(Integer id) {
-        log.info("get vacancy by id = {}",id);
+        log.info("get vacancy by id = {}", id);
         return vacancyRepository.getOne(id);
     }
 
     @Override
     public void deleteVacancyById(Integer id) {
-        log.info("delete vacancy by id = {}",id);
+        log.info("delete vacancy by id = {}", id);
         vacancyRepository.deleteById(id);
     }
 }

@@ -15,12 +15,8 @@ import java.util.List;
 @RequestMapping("/api/")
 public class VacancyRestController {
 
-    private final VacanciesRestService service;
-
     @Autowired
-    public VacancyRestController(VacanciesRestService service) {
-        this.service = service;
-    }
+    VacanciesRestService service;
 
     //put /vacancy
     //TODO  - а если пытаются добавить уже существующую вакансию?

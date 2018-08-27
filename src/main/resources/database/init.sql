@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT  EXISTS Vacancies(
-id integer PRIMARY KEY ,
-name VARCHAR (100) not null ,
-salary INTEGER not  null ,
-experience VARCHAR (100) not null ,
-city VARCHAR(200) not null
-)
+CREATE table IF NOT EXISTS VACANCIES(
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR (100) NOT NULL ,
+  salary INTEGER NOT NULL ,
+  experience VARCHAR (100) NOT NULL ,
+  city VARCHAR(200) NOT NULL
+);
