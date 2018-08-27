@@ -9,7 +9,7 @@ public interface VacanciesRestService {
 
     List<Vacancy> getVacancies();
 
-    Vacancy getVacancyById(int id);
+    Vacancy getVacancyById(Integer id);
 
-    void deleteVacancyById(int id);
+    void deleteVacancyById(Integer id);
 }

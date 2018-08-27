@@ -1,13 +1,15 @@
 package com.alexe1ka.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "VACANCIES")
+@XmlRootElement //TODO xml?
 public class Vacancy {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -31,11 +33,11 @@ public class Vacancy {
         this.city = city;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -89,7 +91,7 @@ public class Vacancy {
 
         Vacancy vacancy = (Vacancy) o;
 
-        if (id != vacancy.id) return false;
+        if (!id.equals(vacancy.id)) return false;
         if (salary != vacancy.salary) return false;
         if (!name.equals(vacancy.name)) return false;
         if (!experience.equals(vacancy.experience)) return false;
