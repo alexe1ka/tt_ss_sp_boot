@@ -1,26 +1,36 @@
 package com.alexe1ka.model;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "VACANCIES")
-//@XmlRootElement //TODO xml?
+@JacksonXmlRootElement(localName = "Vacancy:",namespace = "Vacancy:") //TODO xml?
 public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty
     private Integer id;
 
+    @JacksonXmlProperty
     @Column(name = "name")
     private String name;
 
+    @JacksonXmlProperty
     @Column(name = "salary")
     private int salary;
 
+    @JacksonXmlProperty
     @Column(name = "experience")
     private String experience;
 
+    @JacksonXmlProperty
     @Column(name = "city")
     private String city;
 
@@ -34,7 +44,7 @@ public class Vacancy {
         this.city = city;
     }
 
-//    @XmlElement
+
     public Integer getId() {
         return id;
     }
@@ -43,7 +53,6 @@ public class Vacancy {
         this.id = id;
     }
 
-    @XmlElement
     public String getName() {
         return name;
     }
@@ -52,7 +61,6 @@ public class Vacancy {
         this.name = name;
     }
 
-//    @XmlElement
     public int getSalary() {
         return salary;
     }
@@ -61,7 +69,6 @@ public class Vacancy {
         this.salary = salary;
     }
 
-//    @XmlElement
     public String getExperience() {
         return experience;
     }
@@ -70,7 +77,6 @@ public class Vacancy {
         this.experience = experience;
     }
 
-//    @XmlElement
     public String getCity() {
         return city;
     }

@@ -2,6 +2,7 @@ package com.alexe1ka.controller;
 
 import com.alexe1ka.model.Vacancy;
 import com.alexe1ka.service.VacanciesRestService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-
+@Slf4j
 @RestController
 @RequestMapping("/")
 public class VacancyRestController {
@@ -56,6 +57,7 @@ public class VacancyRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Vacancy vacancy = this.service.getVacancyById(id);
+        log.info("get vac by id = "+id,vacancy);
         if (vacancy == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
