@@ -1,20 +1,25 @@
 package com.alexe1ka.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "vacancies")
-@JacksonXmlRootElement(localName = "Vacancy:") 
-public class Vacancy {
+@JacksonXmlRootElement(localName = "Vacancy")
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Vacancy implements Serializable {
 
 //    @JacksonXmlProperty
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JacksonXmlProperty(isAttribute = true)
+//    @JacksonXmlProperty
     private Integer id;
 
 
