@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "vacancies")
-@JacksonXmlRootElement(localName = "Vacancy:") //TODO xml?
+@JacksonXmlRootElement(localName = "Vacancy:") 
 public class Vacancy {
 
 //    @JacksonXmlProperty
