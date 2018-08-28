@@ -1,5 +1,6 @@
 package com.alexe1ka.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
@@ -10,7 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "VACANCIES")
-@JacksonXmlRootElement(localName = "Vacancy:",namespace = "Vacancy:") //TODO xml?
+@JacksonXmlRootElement(localName = "Vacancy:") //TODO xml?
 public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
