@@ -24,6 +24,7 @@ public class VacancyRestController {
         this.service = service;
     }
 
+
     //put /vacancy
     //TODO  - а если пытаются добавить уже существующую вакансию?
     @RequestMapping(value = "/vacancy", method = RequestMethod.PUT, produces = MediaType.APPLICATION_XML_VALUE)
@@ -39,7 +40,7 @@ public class VacancyRestController {
 
     //get /vacancy
     @ResponseBody
-    @RequestMapping(value = "/vacancy",method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
+    @RequestMapping(value = "/vacancy", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<List<Vacancy>> getVacancies() {
         List<Vacancy> vacancies = this.service.getVacancies();
         if (0 == vacancies.size()) {
@@ -57,7 +58,7 @@ public class VacancyRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Vacancy vacancy = this.service.getVacancyById(id);
-        log.info("get vac by id = "+id,vacancy);
+        log.info("get vac by id = " + id, vacancy);
         if (vacancy == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

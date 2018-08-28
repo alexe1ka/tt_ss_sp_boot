@@ -10,7 +10,6 @@
 
     <name>VacancyRestApi</name>
 
-    <!--<packaging>war</packaging>-->
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -49,7 +48,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <!--<scope>test</scope>-->
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
