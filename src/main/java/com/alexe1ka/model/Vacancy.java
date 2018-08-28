@@ -6,20 +6,21 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "vacancies")
-@JacksonXmlRootElement(localName = "Vacancy")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JacksonXmlRootElement(localName = "vacancy")
 public class Vacancy implements Serializable {
 
-//    @JacksonXmlProperty
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JacksonXmlProperty(isAttribute = true)
-//    @JacksonXmlProperty
     private Integer id;
 
 

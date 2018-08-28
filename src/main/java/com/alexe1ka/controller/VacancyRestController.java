@@ -1,5 +1,6 @@
 package com.alexe1ka.controller;
 
+import com.alexe1ka.model.Vacancies;
 import com.alexe1ka.model.Vacancy;
 import com.alexe1ka.service.VacanciesRestService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -39,11 +39,22 @@ public class VacancyRestController {
 
 
     //get /vacancy
+//    @ResponseBody
+//    @RequestMapping(value = "/vacancy", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
+//    public ResponseEntity<List<Vacancy>> getVacancyList() {
+//        List<Vacancy> vacancies = this.service.getVacancyList();
+//        if (0 == vacancies.size()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(vacancies, HttpStatus.OK);
+//    }
+
     @ResponseBody
     @RequestMapping(value = "/vacancy", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<List<Vacancy>> getVacancies() {
-        List<Vacancy> vacancies = this.service.getVacancies();
-        if (0 == vacancies.size()) {
+    public ResponseEntity<Vacancies> getVacancies() {
+        Vacancies vacancies = new Vacancies();
+        vacancies.setVacancyList(this.service.getVacancies());
+        if (0 == vacancies.getVacancyList().size()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(vacancies, HttpStatus.OK);
