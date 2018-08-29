@@ -4,6 +4,7 @@ import com.alexe1ka.model.Vacancy;
 import com.alexe1ka.repository.VacancyRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -29,8 +30,13 @@ public class VacanciesRestServiceImpl implements VacanciesRestService {
 
     @Override
     public List<Vacancy> getVacancies() {
-        log.info("get all vacancies");
-        return vacancyRepository.findAll();
+        log.info("get all vacancies by name");
+        return vacancyRepository.findAll(orderBy());
+    }
+
+    //sort by title
+    private Sort orderBy() {
+        return new Sort(Sort.Direction.ASC, "title");
     }
 
     @Override

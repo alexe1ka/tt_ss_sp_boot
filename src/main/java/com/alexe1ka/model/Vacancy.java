@@ -1,15 +1,9 @@
 package com.alexe1ka.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
 @Entity
@@ -20,13 +14,14 @@ public class Vacancy implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JacksonXmlProperty(isAttribute = true)
+//    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty
     private Integer id;
 
 
     @JacksonXmlProperty
     @Column(name = "title")
-    private String name;
+    private String title;
 
     @JacksonXmlProperty
     @Column(name = "salary")
@@ -43,8 +38,8 @@ public class Vacancy implements Serializable {
     public Vacancy() {
     }
 
-    public Vacancy(String name, int salary, String experience, String city) {
-        this.name = name;
+    public Vacancy(String title, int salary, String experience, String city) {
+        this.title = title;
         this.salary = salary;
         this.experience = experience;
         this.city = city;
@@ -59,12 +54,12 @@ public class Vacancy implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getSalary() {
@@ -95,7 +90,7 @@ public class Vacancy implements Serializable {
     public String toString() {
         return "Vacancy{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", salary=" + salary +
                 ", experience='" + experience + '\'' +
                 ", city='" + city + '\'' +
@@ -111,7 +106,7 @@ public class Vacancy implements Serializable {
 
         if (!id.equals(vacancy.id)) return false;
         if (salary != vacancy.salary) return false;
-        if (!name.equals(vacancy.name)) return false;
+        if (!title.equals(vacancy.title)) return false;
         if (!experience.equals(vacancy.experience)) return false;
         return city.equals(vacancy.city);
     }
@@ -119,7 +114,7 @@ public class Vacancy implements Serializable {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + name.hashCode();
+        result = 31 * result + title.hashCode();
         result = 31 * result + salary;
         result = 31 * result + experience.hashCode();
         result = 31 * result + city.hashCode();
